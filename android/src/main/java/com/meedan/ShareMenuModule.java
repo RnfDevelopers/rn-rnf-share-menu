@@ -56,7 +56,6 @@ public class ShareMenuModule extends ReactContextBaseJavaModule implements Activ
     String action = intent.getAction();
 
     WritableMap data = Arguments.createMap();
-    data.putString(MIME_TYPE_KEY, type);
 
     if (Intent.ACTION_SEND.equals(action)) {
       if ("text/plain".equals(type)) {
@@ -66,7 +65,16 @@ public class ShareMenuModule extends ReactContextBaseJavaModule implements Activ
 
       Uri fileUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
       if (fileUri != null) {
-        data.putString(DATA_KEY, fileUri.toString());
+        WritableArray uriArr = Arguments.createArray();
+        WritableMap data1 = Arguments.createMap();
+
+
+        data1.putString(MIME_TYPE_KEY, type);
+        data1.putString(DATA_KEY,fileUri.toString());
+
+
+        uriArr.pushMap(data1);
+        data.putArray(DATA_KEY, uriArr);
         return data;
       }
     } else if (Intent.ACTION_SEND_MULTIPLE.equals(action)) {
