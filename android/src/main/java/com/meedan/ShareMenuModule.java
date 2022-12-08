@@ -20,6 +20,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.io.File;
+import java.nio.file.attribute.BasicFileAttributes;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import android.content.ContentResolver;
+
 
 public class ShareMenuModule extends ReactContextBaseJavaModule implements ActivityEventListener {
 
@@ -56,6 +63,8 @@ public class ShareMenuModule extends ReactContextBaseJavaModule implements Activ
     String action = intent.getAction();
 
     WritableMap data = Arguments.createMap();
+    
+    ContentResolver cR = getReactApplicationContext().getContentResolver();
 
     if (Intent.ACTION_SEND.equals(action)) {
       if ("text/plain".equals(type)) {
@@ -67,23 +76,36 @@ public class ShareMenuModule extends ReactContextBaseJavaModule implements Activ
       if (fileUri != null) {
         WritableArray uriArr = Arguments.createArray();
         WritableMap data1 = Arguments.createMap();
-
-
-        data1.putString(MIME_TYPE_KEY, type);
+        data1.putString(MIME_TYPE_KEY, cR.getType(fileUri));
         data1.putString(DATA_KEY,fileUri.toString());
-
-
         uriArr.pushMap(data1);
         data.putArray(DATA_KEY, uriArr);
         return data;
       }
+
+
+
     } else if (Intent.ACTION_SEND_MULTIPLE.equals(action)) {
       ArrayList<Uri> fileUris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
       if (fileUris != null) {
         WritableArray uriArr = Arguments.createArray();
+        WritableMap data1;
         for (Uri uri : fileUris) {
-          uriArr.pushString(uri.toString());
+          
+        File f = new File(uri.toString());
+        String name = f.getName();
+ 
+          data1 = Arguments.createMap();
+          data1.putString(DATA_KEY,uri.toString());
+          data1.putString("mimeType",cR.getType(uri));
+          data1.putString("name",name);
+ 
+          uriArr.pushMap(data1);
+         
         }
+
+
+
         data.putArray(DATA_KEY, uriArr);
         return data;
       }
