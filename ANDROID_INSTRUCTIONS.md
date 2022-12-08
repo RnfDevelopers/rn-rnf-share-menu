@@ -7,8 +7,8 @@
 
 ```gradle
 ...
-include ':react-native-share-menu', ':app'
-project(':react-native-share-menu').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-share-menu/android')
+include ':rn-rnf-share-menupp'
+project(':rn-rnf-share-menu').projectDir = new File(rootProject.projectDir, '../node_modules/rn-rnf-share-menu/android')
 ```
 
 - In `android/app/build.gradle`
@@ -17,7 +17,7 @@ project(':react-native-share-menu').projectDir = new File(rootProject.projectDir
 ...
 dependencies {
     ...
-    compile project(':react-native-share-menu')
+    compile project(':rn-rnf-share-menu')
 }
 ```
 

@@ -7,7 +7,7 @@
  */
 import React, {useState, useEffect, useCallback} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-import ShareMenu from 'react-native-share-menu';
+import ShareMenu from 'rn-rnf-share-menu';
 
 type SharedItem = {
   mimeType: string,

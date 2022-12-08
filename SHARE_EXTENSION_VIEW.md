@@ -25,7 +25,7 @@ Add the following to the new `Bridging-Header.h` file:
 
 Right click on your Share Extension folder, and choose `Add Files to "ProjectName"`
 
-On the pop-up, select `node_modules/react-native-share-menu/ios/ReactShareViewController.swift`. Make sure `Copy items if needed` is NOT selected and that the selected target is your newly created Share Extension
+On the pop-up, select `node_modules/rn-rnf-share-menu/ios/ReactShareViewController.swift`. Make sure `Copy items if needed` is NOT selected and that the selected target is your newly created Share Extension
 
 ![React View Controller Instructions](screenshots/Xcode-06.png)
 

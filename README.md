@@ -1,13 +1,13 @@
-# react-native-share-menu
+# rn-rnf-share-menu
 
-[![npm version](https://badge.fury.io/js/react-native-share-menu.svg)](https://www.npmjs.com/package/react-native-share-menu)
+[![npm version](https://badge.fury.io/js/rn-rnf-share-menu.svg)](https://www.npmjs.com/package/rn-rnf-share-menu)
 
 Add your app as a target for sharing from other apps and write iOS Share Extensions in React Native.
 
 ## Installation
 
 ```bash
-npm i --save react-native-share-menu
+npm i --save rn-rnf-share-menu
 ```
 
 ### Automatic Linking (React Native 0.60+)
@@ -41,7 +41,7 @@ react-native link
 ```javascript
 import React, { useState, useEffect, useCallback } from "react";
 import { AppRegistry, Text, View, Image, Button } from "react-native";
-import ShareMenu, { ShareMenuReactView } from "react-native-share-menu";
+import ShareMenu, { ShareMenuReactView } from "rn-rnf-share-menu";
 
 type SharedItem = {
   mimeType: string,

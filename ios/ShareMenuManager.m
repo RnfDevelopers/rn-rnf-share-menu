@@ -1,6 +1,6 @@
 //
 //  ShareMenuManager.m
-//  react-native-share-menu
+//  rn-rnf-share-menu
 //
 //  Created by Gustavo Parreira on 26/07/2020.
 //
